@@ -1,11 +1,17 @@
 .filter {
-  position: relative;
+  padding-top: 78px;
+
   max-width: 340px;
+
+  &__form {
+    position: relative;
+  }
 
   &__title {
     font-weight: 700;
     font-size: 26px;
     line-height: 32px;
+    margin-bottom: 30px;
   }
 
   &__fields-list {
@@ -33,6 +39,8 @@
 
     &_column {
       flex-direction: column;
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 
@@ -40,7 +48,10 @@
     width: 165px;
     font-size: 16px;
     line-height: 20px;
-    padding: 9px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid $color-primary;
+    height: 38px;
 
     &_select {
       width: 100%;
@@ -58,12 +69,15 @@
   }
 
   &__apply {
+    margin: 0 auto;
+    display: block;
     background-color: $color-primary;
     color: $color-secondary;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
     padding: 8px 20px;
+    border: none;
   }
 
   &__reset {

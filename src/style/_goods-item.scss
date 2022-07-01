@@ -8,7 +8,9 @@
   gap: 10px;
 
   &__image {
+    display: block;
     width: 100%;
+    margin-bottom: 10px;
   }
 
   &__title {
