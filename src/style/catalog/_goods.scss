@@ -1,0 +1,11 @@
+.goods {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 40px 30px;
+  }
+  &__ {
+    min-width: 310px;
+    max-width: 340px;
+  }
+}
