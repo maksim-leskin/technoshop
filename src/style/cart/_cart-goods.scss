@@ -1,0 +1,15 @@
+.cart-goods {
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    max-width: 990px;
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+}

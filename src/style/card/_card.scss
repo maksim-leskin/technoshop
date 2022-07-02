@@ -1,0 +1,125 @@
+.card {
+  margin-bottom: 70px;
+  &__details {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 70px;
+  }
+
+  &__gallery {
+    max-width: 710px;
+  }
+
+  &__info {
+    width: 100%;
+    padding-top: 120px;
+  }
+
+  &__image {
+    margin-bottom: 20px;
+  }
+
+  &__slider-thumb {
+    max-width: 447px;
+  }
+
+  &__thumb-btn {
+    width: 120px;
+    height: 120px;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 54px;
+    margin-bottom: 20px;
+  }
+
+  &__vendor-code {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 63px;
+  }
+
+  &__control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 70px;
+    max-width: 826px;
+  }
+
+  &__count {
+    max-width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-right: 80px;
+  }
+
+  &__btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid $color-primary;
+    background-color: transparent;
+    font-size: 30px;
+    line-height: 100%;
+  }
+
+  &__number {
+    font-size: 30px;
+    line-height: 37px;
+  }
+
+  &__price {
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 41px;
+    margin-right: auto;
+  }
+
+  &__add-cart {
+    width: 352px;
+    height: 57px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-secondary;
+    background-color: $color-main;
+    border: none;
+  }
+
+  &__params-list {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+  }
+
+  &__params-item {
+    display: grid;
+    grid-template-columns: 210px max-content;
+    gap: 100px;
+  }
+
+  &__description {
+    max-width: 1450px;
+  }
+
+  &__description-title {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 20px;
+  }
+
+  &__description-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+  }
+
+}

@@ -1,0 +1,20 @@
+.cart {
+  &__container {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    justify-content: space-between;
+    gap: 70px 30px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 54px;
+  }
+
+
+  &__total {
+    padding-top: 94px;
+  }
+
+}
