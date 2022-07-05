@@ -65,11 +65,38 @@ fieldset {
   max-width: 1880px;
   padding: 0 30px;
   margin: 0 auto;
+
+  @include desktop {
+    max-width: 1480px;
+  }
+
+  @include laptop {
+    max-width: 1000px;
+    padding: 0 15px;
+  }
+
+  @include tablet {
+    max-width: 670px;
+  }
+
+  @include mobile {
+    max-width: 320px;
+    padding: 0 10px;
+  }
 }
 
 .main {
   padding-top: 44px;
   padding-bottom: 120px;
+
+  @include tablet {
+    padding-top: 24px;
+    padding-bottom: 80px;
+  }
+
+  @include mobile {
+    padding-top: 35px;
+  }
 }
 
 

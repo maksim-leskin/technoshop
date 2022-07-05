@@ -1,7 +1,10 @@
 .filter {
   padding-top: 78px;
-
   max-width: 340px;
+
+  @include tablet {
+    display: none;
+  }
 
   &__form {
     position: relative;
@@ -36,6 +39,7 @@
   &__flex {
     display: flex;
     gap: 10px;
+    justify-content: space-between;
 
     &_column {
       flex-direction: column;
@@ -52,6 +56,10 @@
     padding-right: 10px;
     border: 1px solid $color-primary;
     height: 38px;
+
+    @include laptop {
+      width: 145px;
+    }
 
     &_select {
       width: 100%;

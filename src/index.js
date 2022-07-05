@@ -13,8 +13,33 @@ const paginationWrapper = document.querySelector('.pagination');
 const pageURL = new URL(location);
 const page = +pageURL.searchParams.get('page') || 1;
 
+let isMobile = false;
+
+const startPagination = () => {
+  if (window.innerWidth <= 560) {
+    pagination(paginationWrapper, 12, page, 4);
+    isMobile = true;
+  } else {
+    pagination(paginationWrapper, 12, page, 6);
+    isMobile = false;
+  }
+}
+
 try {
-  pagination(paginationWrapper, 12, page, 5);
+  startPagination();
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 560 && !isMobile) {
+      pagination(paginationWrapper, 12, page, 4);
+      isMobile = true;
+    }
+
+    if (window.innerWidth > 560 && isMobile)  {
+      pagination(paginationWrapper, 12, page, 6);
+      isMobile = false;
+    }
+  })
+
 } catch (e) {
   console.warn(e)
   console.warn('Это не главная страница')

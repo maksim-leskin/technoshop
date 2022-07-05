@@ -18,6 +18,8 @@ const createItemPagination = (hrefLink, textContent, active) => {
 
 
 export const pagination = (wrapper, pages, page, count) => {
+  wrapper.textContent = '';
+
   const paginationList = document.createElement('ul');
   paginationList.className = 'pagination__list';
 

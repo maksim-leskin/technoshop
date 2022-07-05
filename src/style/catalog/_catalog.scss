@@ -10,9 +10,32 @@
     display: grid;
     grid-template-columns: 4fr 340px;
     gap: 72px 30px;
+
+    @include desktop {
+      grid-template-columns: 3fr 340px;
+      column-gap: 20px;
+    }
+
+    @include laptop {
+      grid-template-columns: 2fr 310px;
+      row-gap: 80px;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      row-gap: 50px;
+    }
+
+    @include mobile {
+      row-gap: 40px;
+    }
   }
 
   &__pagination {
     grid-column: 2 span;
+
+    @include tablet {
+      grid-column: auto;
+    }
   }
 }

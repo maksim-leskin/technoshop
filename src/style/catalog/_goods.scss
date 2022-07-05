@@ -3,6 +3,22 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(310px, 340px));
     gap: 40px 30px;
+
+    @include desktop {
+      gap: 20px;
+      justify-content: space-evenly;
+    }
+
+    @include laptop {
+      grid-template-columns: repeat(auto-fill, 310px);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(auto-fill, 145px);
+      gap: 10px;
+    }
+
   }
+
 
 }
