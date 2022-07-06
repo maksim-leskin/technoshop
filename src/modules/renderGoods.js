@@ -4,8 +4,6 @@ export const renderGoods = (wrapper, goods) => {
   wrapper.textContent = '';
 
   const cards = goods.map(item => {
-    console.log(item);
-
     const li = document.createElement('li');
     li.className = 'goods__item';
 
