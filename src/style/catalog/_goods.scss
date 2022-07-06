@@ -20,5 +20,22 @@
 
   }
 
+  &__preload {
+    grid-column: 1 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      transform: rotate(0);
+      animation: rotation 1s infinite linear;
+    }
+  }
+
+  @keyframes rotation {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
 }
