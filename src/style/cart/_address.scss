@@ -1,12 +1,37 @@
 .address {
+  @include desktop {
+    max-width: 700px;
+  }
+
+  @include laptop {
+    max-width: 100%;
+  }
+
   &__title {
     margin-bottom: 30px;
+
+    @include mobile {
+      margin-bottom: 20px;
+    }
   }
 
   &__form {
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(3, 1fr);
+
+    @include desktop {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @include tablet {
+      gap: 10px;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__label-select {
@@ -34,6 +59,11 @@
     color: $color-grey;
     padding: 10px;
 
+    @include tablet {
+      font-size: 12px;
+      line-height: 15px;
+    }
+
     &_select {
       appearance: none;
     }
@@ -41,6 +71,7 @@
     &_btn {
       background-color: $color-primary;
       color: $color-secondary;
+      border: 0;
     }
   }
 
@@ -48,7 +79,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    grid-column: 3;
+    grid-column: -2;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
