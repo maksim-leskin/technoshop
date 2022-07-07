@@ -1,1 +1,1 @@
-export const API_URI = 'https://git.heroku.com/technoshop-methed.git/';
+export const API_URI = 'https://technoshop-methed.herokuapp.com/';
