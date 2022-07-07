@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {logPlugin} = require("@babel/preset-env/lib/debug");
+const Critical = require('critical-css-webpack-plugin')
 
 const PAGES = ['index', 'cart', 'card'];
 
@@ -34,6 +34,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
+    new Critical()
   ],
   module: {
     rules: [
@@ -54,6 +55,7 @@ module.exports = {
               },
             },
           },
+          "group-css-media-queries-loader",
           'sass-loader',
         ],
       },

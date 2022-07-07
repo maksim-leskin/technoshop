@@ -7,7 +7,7 @@
     "start": "webpack serve",
     "build-dev": "webpack",
     "build-prod": "webpack --node-env=production",
-    "clear": "rd /s /q dist"
+    "clear": "rd /s /q public"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,9 @@
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "babel-loader": "^8.2.5",
+    "critical-css-webpack-plugin": "^3.0.0",
     "css-loader": "^6.7.1",
+    "group-css-media-queries-loader": "^4.3.0",
     "html-loader": "^3.1.2",
     "html-webpack-plugin": "^5.5.0",
     "image-webpack-loader": "^8.1.0",
