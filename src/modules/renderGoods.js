@@ -25,7 +25,7 @@ export const renderGoods = (wrapper, goods) => {
 
         <div class="goods-item__buy">
           <p class="goods-item__price">${item.price} ₽</p>
-          <button class="goods-item_to-cart" data-id-goods="${item.id}">В корзину</button>
+          <button class="goods-item__to-cart" data-id-goods="${item.id}">В корзину</button>
         </div>
       </article>
     `;

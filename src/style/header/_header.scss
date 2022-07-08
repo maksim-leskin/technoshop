@@ -91,5 +91,22 @@
     }
   }
 
+  &__cart {
+    position: relative;
 
+    &:after {
+      content: attr(data-count);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: $color-main;
+      width: 22px;
+      height: 22px;
+      position: absolute;
+      right: -8px;
+      bottom: -8px;
+    }
+  }
 }

@@ -61,13 +61,18 @@
     }
   }
 
-  &_to-cart {
+  &__to-cart {
     background-color: transparent;
     border: 1px solid $color-primary;
     padding: 8px 20px;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
+
+    &_remove {
+      color: $color-secondary;
+      background-color: $color-primary;
+    }
 
     @include mobile {
       font-size: 12px;

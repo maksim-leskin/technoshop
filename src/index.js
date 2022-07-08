@@ -11,6 +11,8 @@ import {getGoods, getGoodsItem} from "./modules/goodsService";
 import {renderGoods} from "./modules/renderGoods";
 import {renderItem} from "./modules/renderItem";
 import {filter} from "./modules/filter";
+import {cartControl} from "./modules/cartControl";
+import {serviceCounter} from "./modules/counterControl";
 
 
 try {
@@ -33,6 +35,11 @@ try {
     getGoods().then(({goods, pages, page}) => {
       renderGoods(goodsList, goods);
       startPagination(paginationWrapper, pages, page);
+      cartControl({
+        wrapper: goodsList,
+        classAdd: 'goods-item__to-cart',
+        classDelete: 'goods-item__to-cart_remove',
+      })
     })
   }
 } catch (e) {
@@ -56,8 +63,19 @@ try {
 
     card.append(preload);
 
+    serviceCounter({
+      selectorWrapper: '.card__count',
+      selectorNumber: '.card__number',
+      selectorDec: '.card__btn_dec',
+      selectorInc: '.card__btn_inc',
+    })
+
     getGoodsItem(id).then(item => {
       renderItem(item);
+      cartControl({
+        classAdd: 'card__add-cart',
+        classCount: 'card__number',
+      })
       preload.remove();
       return item.category;
     }).then(category => {
@@ -72,7 +90,7 @@ try {
 
 
 
-// new Swiper('.recommended__carousel', {
-//   spaceBetween: 30,
-//   slidesPerView: 5,
-// });
+new Swiper('.recommended__carousel', {
+  spaceBetween: 30,
+  slidesPerView: 5,
+});
