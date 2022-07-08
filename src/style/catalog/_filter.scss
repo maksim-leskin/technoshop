@@ -4,6 +4,16 @@
 
   @include tablet {
     display: none;
+    position: absolute;
+    background-color: $color-secondary;
+    top: 0;
+    right: 0;
+    z-index: 555;
+    padding: 14px 20px 26px;
+
+    &_show {
+      display: block;
+    }
   }
 
   &__form {
@@ -15,6 +25,25 @@
     font-size: 26px;
     line-height: 32px;
     margin-bottom: 30px;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 22px;
+      line-height: 27px;
+      justify-content: flex-end;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 18px;
+        height: 18px;
+        background-image: url('img/arrow-v.svg');
+        transform: rotate(180deg);
+      }
+
+    }
   }
 
   &__fields-list {
@@ -86,6 +115,10 @@
     line-height: 20px;
     padding: 8px 20px;
     border: none;
+
+    @include tablet {
+      margin-bottom: 15px;
+    }
   }
 
   &__reset {
@@ -98,6 +131,12 @@
     color: $color-grey;
     background-color: transparent;
     border: 0;
+
+    @include tablet {
+      position: static;
+      display: block;
+      margin: 0 auto;
+    }
   }
 
 }
