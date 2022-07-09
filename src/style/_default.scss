@@ -103,3 +103,18 @@ fieldset {
 input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
+
+.preload {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background-color: $color-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    transform: rotate(0);
+    animation: rotation 1s infinite linear;
+  }
+}
