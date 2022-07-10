@@ -53,7 +53,6 @@ const checkItems = ({classDelete, classAdd, classCount} = {}) => {
     const countElem = document.querySelector(`.${classCount}`);
     const addElem = document.querySelector(`.${classAdd}`);
     countElem.value = cartGoods[addElem.dataset.idGoods] || 1;
-
   }
 };
 
