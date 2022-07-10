@@ -13,6 +13,7 @@ import {renderItem} from "./modules/renderItem";
 import {filter} from "./modules/filter";
 import {cartControl} from "./modules/cartControl";
 import {serviceCounter} from "./modules/counterControl";
+import {searchWithoutReload} from "./modules/search";
 
 
 try {
@@ -22,6 +23,7 @@ try {
 
     const paginationWrapper = document.querySelector('.pagination');
 
+    searchWithoutReload(goodsList, paginationWrapper);
     filter(goodsList, paginationWrapper);
 
     goodsList.innerHTML = `
@@ -94,3 +96,4 @@ new Swiper('.recommended__carousel', {
   spaceBetween: 30,
   slidesPerView: 5,
 });
+
