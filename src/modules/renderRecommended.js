@@ -12,6 +12,7 @@ export const renderRecommended = (recommended, data, id) => {
 
     const titleSection = document.createElement('h2');
     titleSection.className = 'recommended__title';
+    titleSection.textContent = 'Возможно вам также понравится';
 
     const swiperBlock = document.createElement('div');
     swiperBlock.className = 'swiper recommended__carousel';
@@ -81,20 +82,3 @@ export const renderRecommended = (recommended, data, id) => {
     recommended.remove();
   }
 };
-
-
-/*
-
-          <article class="goods-item">
-            <a href="card.html">
-              <img class="goods-item__image" src="img/monoblock.jpg" alt="">
-              <h3 class="goods-item__title">Моноблок HP ProOne</h3>
-            </a>
-
-            <div class="goods-item__buy">
-              <p class="goods-item__price">38049 ₽</p>
-              <button class="goods-item_to-cart">В корзину</button>
-            </div>
-          </article>
-
- */
