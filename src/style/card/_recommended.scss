@@ -4,6 +4,16 @@
     font-size: 44px;
     line-height: 54px;
     margin-bottom: 10px;
+
+    @include laptop {
+      font-size: 30px;
+      line-height: 37px;
+    }
+
+    @include mobile {
+      font-size: 20px;
+      line-height: 24px;
+    }
   }
 
   .swiper-slide {

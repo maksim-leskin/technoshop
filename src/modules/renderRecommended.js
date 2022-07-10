@@ -34,6 +34,7 @@ export const renderRecommended = (recommended, data, id) => {
 
       const itemLink = document.createElement('a');
       itemLink.className = 'goods-item-link';
+      itemLink.href = `card.html?id=${item.id}`
 
       const itemImage = document.createElement('img');
       itemImage.className = 'goods-item__image';
@@ -68,8 +69,28 @@ export const renderRecommended = (recommended, data, id) => {
     swiperWrapper.append(...goodsCards);
 
     new Swiper(swiperBlock, {
-      spaceBetween: 30,
-      slidesPerView: 5,
+      spaceBetween: 10,
+      slidesPerView: 2,
+      breakpoints: {
+        521: {
+          spaceBetween: 20,
+          slidesPerView: 1,
+        },
+        620: {
+          spaceBetween: 20,
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1600: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+        1920: {
+          slidesPerView: 5,
+        },
+      }
     });
 
     cartControl({

@@ -3,34 +3,110 @@
   position: relative;
   min-height: 80vh;
 
+  @include tablet {
+    margin-bottom: 50px;
+  }
+
   &__details {
     display: flex;
     gap: 30px;
     margin-bottom: 70px;
+
+    @include desktop {
+      gap: 10px;
+    }
+
+    @include desktop {
+      gap: 20px;
+      margin-bottom: 57px;
+    }
+
+    @include tablet {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    @include mobile {
+      gap: 30px;
+      margin-bottom: 30px;
+    }
   }
 
   &__gallery {
     max-width: 710px;
+
+    @include desktop {
+      max-width: 50%;
+    }
+
+    @include laptop {
+      max-width: calc(50% - 10px);
+    }
+
+    @include tablet {
+      max-width: 310px;
+    }
+
+    @include mobile {
+      max-width: 200px;
+    }
   }
 
   &__info {
     width: 100%;
     padding-top: 120px;
+
+    @include desktop {
+      padding-top: 78px;
+    }
+
+    @include laptop {
+      padding-top: 46px;
+    }
+
+    @include tablet {
+      padding-top: 0;
+    }
   }
 
   &__image {
     margin-bottom: 20px;
+
+    @include tablet {
+      margin-bottom: 10px;
+    }
   }
 
   &__slider-thumb {
     max-width: 447px;
+
+    @include laptop {
+      max-width: 285px;
+    }
+
+    @include tablet {
+      max-width: 270px;
+    }
+
+    @include mobile {
+      max-width: 200px;
+    }
   }
 
   &__thumb-btn {
     width: 120px;
-    height: 120px;
     background-color: transparent;
     border: none;
+
+    @include laptop {
+      width: 77px;
+    }
+
+    @include mobile {
+      width: 57px;
+    }
   }
 
   &__title {
@@ -38,6 +114,16 @@
     font-size: 44px;
     line-height: 54px;
     margin-bottom: 20px;
+
+    @include laptop {
+      font-size: 30px;
+      line-height: 37px;
+    }
+
+    @include mobile {
+      font-size: 22px;
+      line-height: 27px;
+    }
   }
 
   &__vendor-code {
@@ -45,6 +131,20 @@
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 63px;
+
+    @include laptop {
+      margin-bottom: 30px;
+    }
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   &__control {
@@ -52,6 +152,20 @@
     align-items: center;
     margin-bottom: 70px;
     max-width: 826px;
+    gap: 50px;
+    flex-wrap: wrap;
+
+    @include laptop {
+      margin-bottom: 60px;
+    }
+
+    @include tablet {
+      margin-bottom: 50px;
+    }
+
+    @include laptop {
+      gap: 25px 40px;
+    }
   }
 
   &__count {
@@ -60,7 +174,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-right: 80px;
   }
 
   &__btn {
@@ -76,13 +189,27 @@
   &__number {
     font-size: 30px;
     line-height: 37px;
+
+    @include tablet {
+      font-size: 20px;
+      line-height: 24px;
+    }
   }
 
   &__price {
     font-weight: 500;
     font-size: 34px;
     line-height: 41px;
-    margin-right: auto;
+
+    @include tablet {
+      font-size: 26px;
+      line-height: 32px;
+    }
+
+    @include mobile {
+      font-size: 20px;
+      line-height: 24px;
+    }
   }
 
   &__add-cart {
@@ -94,18 +221,54 @@
     color: $color-secondary;
     background-color: $color-main;
     border: none;
+
+    @include desktop {
+      max-width: 340px;
+    }
+
+    @include tablet {
+      max-width: 310px;
+      margin: 0 auto;
+    }
+
+    @include mobile {
+      max-width: 200px;
+      height: 47px;
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 
   &__params-list {
     font-weight: 500;
     font-size: 18px;
     line-height: 140%;
+    max-width: 700px;
+
+    @include laptop {
+      font-size: 16px;
+      line-height: 140%;
+    }
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 140%;
+    }
   }
 
   &__params-item {
     display: grid;
-    grid-template-columns: 210px max-content;
-    gap: 100px;
+    grid-template-columns: 270px 1fr;
+    gap: 80px;
+
+    @include laptop {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    @include mobile {
+      gap: 30px
+    }
   }
 
   &__description {
@@ -117,12 +280,32 @@
     font-size: 26px;
     line-height: 32px;
     margin-bottom: 20px;
+
+    @include tablet {
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 25px;
+    }
+
+    @include mobile {
+      margin-bottom: 10px;
+    }
   }
 
   &__description-text {
     font-weight: 500;
     font-size: 18px;
     line-height: 140%;
+
+    @include laptop {
+      font-size: 16px;
+      line-height: 140%;
+    }
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 140%;
+    }
   }
 
 }
