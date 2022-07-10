@@ -70,7 +70,6 @@ const createDescription = (descriptions) => {
 }
 
 export const renderItem = item => {
-  console.log(item)
 
   const cardImage = document.querySelector('.card__image');
   cardImage.append(createCardImageSlider(item.images.large));

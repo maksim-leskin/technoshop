@@ -1,6 +1,6 @@
 import {API_URI} from "./var";
 
-export const renderGoods = (wrapper, goods) => {
+export const renderGoods = (wrapper, goods, classWrapperCard) => {
   wrapper.textContent = '';
 
   if (!goods.length) {
@@ -9,7 +9,7 @@ export const renderGoods = (wrapper, goods) => {
 
   const cards = goods.map(item => {
     const li = document.createElement('li');
-    li.className = 'goods__item';
+    li.className = classWrapperCard;
 
     li.innerHTML = `
       <article class="goods-item">

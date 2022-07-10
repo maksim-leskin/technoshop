@@ -7,12 +7,14 @@ import Swiper, {Thumbs, Scrollbar} from 'swiper';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import {startPagination} from "./modules/pagination";
-import {getGoods, getGoodsItem, getGoodsList} from "./modules/goodsService";
+import {getGoods, getGoodsCategoryItem, getGoodsItem, getGoodsList} from "./modules/goodsService";
 import {renderGoods} from "./modules/renderGoods";
 import {renderItem} from "./modules/renderItem";
 import {filter} from "./modules/filter";
 import {cartControl, renderCart} from "./modules/cartControl";
 import {serviceCounter} from "./modules/counterControl";
+import {searchWithoutReload} from "./modules/search";
+import {renderRecommended} from "./modules/renderRecommended";
 
 
 try {
@@ -23,6 +25,7 @@ try {
     const paginationWrapper = document.querySelector('.pagination');
 
     filter(goodsList, paginationWrapper);
+    searchWithoutReload(goodsList, paginationWrapper);
 
     goodsList.innerHTML = `
     <div class="goods__preload">
@@ -33,7 +36,7 @@ try {
   `;
 
     getGoods().then(({goods, pages, page}) => {
-      renderGoods(goodsList, goods);
+      renderGoods(goodsList, goods, 'goods__item');
       startPagination(paginationWrapper, pages, page);
       cartControl({
         wrapper: goodsList,
@@ -46,12 +49,14 @@ try {
   console.warn(e)
 }
 
+
 try {
   const card = document.querySelector('.card');
 
   if (card) {
+    const recommended = document.querySelector('.recommended');
     const pageURL = new URL(location);
-    const id = +pageURL.searchParams.get('id');
+    const id = pageURL.searchParams.get('id');
 
     const preload = document.createElement('div');
     preload.className = 'preload';
@@ -79,9 +84,9 @@ try {
       preload.remove();
       return item.category;
     }).then(category => {
-      return getGoods({category})
+      return getGoodsCategoryItem(category);
     }).then(data => {
-      console.log(data);
+      renderRecommended(recommended, data, id);
     })
   }
 } catch (e) {
@@ -121,9 +126,3 @@ try {
   console.warn(e);
 }
 
-
-
-new Swiper('.recommended__carousel', {
-  spaceBetween: 30,
-  slidesPerView: 5,
-});

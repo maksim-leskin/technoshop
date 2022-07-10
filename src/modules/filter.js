@@ -74,6 +74,7 @@ export const filter = (goodsList, paginationWrapper) => {
     const search = url.searchParams.get('search');
 
     url.search = '';
+    url.searchParams.set('search', search);
 
     for (const key in data) {
       url.searchParams.set(key, data[key]);
@@ -84,7 +85,7 @@ export const filter = (goodsList, paginationWrapper) => {
     getGoods().then(({goods, pages, page}) => {
       filter.classList.remove('filter_show')
       hideOverlay();
-      renderGoods(goodsList, goods);
+      renderGoods(goodsList, goods, 'goods__item');
       startPagination(paginationWrapper, pages, page);
     })
 

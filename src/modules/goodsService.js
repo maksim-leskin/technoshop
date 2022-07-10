@@ -25,3 +25,7 @@ export const getCategory = () =>
 export const getGoodsList = list =>
   fetch(`${API_URI}api/goods/?list=${list}`)
     .then(response => response.json());
+
+export const getGoodsCategoryItem = (category) =>
+  fetch(`${API_URI}api/goods/?category=${category}`)
+    .then(response => response.json());
