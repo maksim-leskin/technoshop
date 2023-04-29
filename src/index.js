@@ -1,11 +1,11 @@
 import './index.html';
 import './card.html';
 import './cart.html';
-import './index.scss';
-
-import Swiper, {Thumbs, Scrollbar} from 'swiper';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
+import './index.scss';
+
+
 import {startPagination} from "./modules/pagination";
 import {getGoods, getGoodsCategoryItem, getGoodsItem, getGoodsList} from "./modules/goodsService";
 import {renderGoods} from "./modules/renderGoods";
