@@ -1,1 +1,1 @@
-export const API_URI = 'http://localhost:3001/';
+export const API_URI = 'https://glitter-juicy-bagpipe.glitch.me/';
