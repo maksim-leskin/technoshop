@@ -5,23 +5,25 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import './index.scss';
 
-
-import {startPagination} from "./modules/pagination";
-import {getGoods, getGoodsCategoryItem, getGoodsItem, getGoodsList} from "./modules/goodsService";
-import {renderGoods} from "./modules/renderGoods";
-import {renderItem} from "./modules/renderItem";
-import {filter} from "./modules/filter";
-import {cartControl, renderCart} from "./modules/cartControl";
-import {serviceCounter} from "./modules/counterControl";
-import {searchWithoutReload} from "./modules/search";
-import {renderRecommended} from "./modules/renderRecommended";
-
+import { startPagination } from './modules/pagination';
+import {
+  getGoods,
+  getGoodsCategoryItem,
+  getGoodsItem,
+  getGoodsList,
+} from './modules/goodsService';
+import { renderGoods } from './modules/renderGoods';
+import { renderItem } from './modules/renderItem';
+import { filter } from './modules/filter';
+import { cartControl, renderCart } from './modules/cartControl';
+import { serviceCounter } from './modules/counterControl';
+import { searchWithoutReload } from './modules/search';
+import { renderRecommended } from './modules/renderRecommended';
 
 try {
   const goodsList = document.querySelector('.goods__list');
 
   if (goodsList) {
-
     const paginationWrapper = document.querySelector('.pagination');
 
     filter(goodsList, paginationWrapper);
@@ -35,20 +37,19 @@ try {
     </div>
   `;
 
-    getGoods().then(({goods, pages, page}) => {
+    getGoods().then(({ goods, pages, page }) => {
       renderGoods(goodsList, goods, 'goods__item');
       startPagination(paginationWrapper, pages, page);
       cartControl({
         wrapper: goodsList,
         classAdd: 'goods-item__to-cart',
         classDelete: 'goods-item__to-cart_remove',
-      })
-    })
+      });
+    });
   }
 } catch (e) {
-  console.warn(e)
+  console.warn(e);
 }
-
 
 try {
   const card = document.querySelector('.card');
@@ -73,33 +74,36 @@ try {
       number: '.card__number',
       selectorDec: '.card__btn_dec',
       selectorInc: '.card__btn_inc',
-    })
+    });
 
-    getGoodsItem(id).then(item => {
-      renderItem(item);
-      cartControl({
-        classAdd: 'card__add-cart',
-        classCount: 'card__number',
+    getGoodsItem(id)
+      .then(item => {
+        renderItem(item);
+        cartControl({
+          classAdd: 'card__add-cart',
+          classCount: 'card__number',
+        });
+        preload.remove();
+        return item.category;
       })
-      preload.remove();
-      return item.category;
-    }).then(category => {
-      return getGoodsCategoryItem(category);
-    }).then(data => {
-      renderRecommended(recommended, data, id);
-    })
+      .then(category => {
+        return getGoodsCategoryItem(category);
+      })
+      .then(data => {
+        renderRecommended(recommended, data, id);
+      });
   }
 } catch (e) {
-  console.warn(e)
+  console.warn(e);
 }
 
 try {
   const cart = document.querySelector('.cart');
 
   if (cart) {
-    const cartGoods = localStorage.getItem('cart-ts') ?
-      JSON.parse(localStorage.getItem('cart-ts')) :
-      {};
+    const cartGoods = localStorage.getItem('cart-ts')
+      ? JSON.parse(localStorage.getItem('cart-ts'))
+      : {};
 
     const list = Object.keys(cartGoods);
 
@@ -118,11 +122,9 @@ try {
         renderCart(goods, cartGoods);
         cartControl();
         preload.remove();
-      })
+      });
     }
   }
-
 } catch (e) {
   console.warn(e);
 }
-

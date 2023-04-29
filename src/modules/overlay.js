@@ -7,11 +7,10 @@ overlay.style.cssText = `
   z-index: 333;
 `;
 
-
 export const showOverlay = () => {
   document.body.append(overlay);
 };
 
 export const hideOverlay = () => {
   overlay.remove();
-}
+};

@@ -1,4 +1,9 @@
-export const serviceCounter = ({ wrapper, number, selectorDec, selectorInc }) => {
+export const serviceCounter = ({
+  wrapper,
+  number,
+  selectorDec,
+  selectorInc,
+}) => {
   let wrapCounter;
   let numberElem;
   if (typeof wrapper === 'string') {
@@ -9,16 +14,16 @@ export const serviceCounter = ({ wrapper, number, selectorDec, selectorInc }) =>
     numberElem = number;
   }
 
-  wrapCounter.addEventListener('click', (e) => {
-    console.log(wrapCounter)
+  wrapCounter.addEventListener('click', e => {
+    console.log(wrapCounter);
     const target = e.target;
 
     if (target.closest(selectorDec)) {
-      numberElem.value = +numberElem.value === 1 ? 1 : +numberElem.value - 1
+      numberElem.value = +numberElem.value === 1 ? 1 : +numberElem.value - 1;
     }
 
     if (target.closest(selectorInc)) {
       numberElem.value = +numberElem.value + 1;
     }
-  })
-}
+  });
+};

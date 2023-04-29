@@ -1,7 +1,7 @@
-import {getCategory, getGoods} from "./goodsService";
-import {renderGoods} from "./renderGoods";
-import {startPagination} from "./pagination";
-import {hideOverlay, showOverlay} from "./overlay";
+import { getCategory, getGoods } from './goodsService';
+import { renderGoods } from './renderGoods';
+import { startPagination } from './pagination';
+import { hideOverlay, showOverlay } from './overlay';
 
 const toggleFilter = (filter, catalogFilterBtn, filterTitle) => {
   catalogFilterBtn.addEventListener('click', () => {
@@ -12,8 +12,8 @@ const toggleFilter = (filter, catalogFilterBtn, filterTitle) => {
   filterTitle.addEventListener('click', () => {
     filter.classList.remove('filter_show');
     hideOverlay();
-  })
-}
+  });
+};
 
 export const filter = (goodsList, paginationWrapper) => {
   const filter = document.querySelector('.filter');
@@ -33,15 +33,15 @@ export const filter = (goodsList, paginationWrapper) => {
   });
 
   const filterForm = document.querySelector('.filter__form');
-  filterForm.addEventListener('submit', (e) => {
-    e.preventDefault()
+  filterForm.addEventListener('submit', e => {
+    e.preventDefault();
 
     const checkboxes = new Set();
     [...filterForm.elements].forEach(elem => {
       if (elem.type === 'checkbox') {
         checkboxes.add(elem.name);
       }
-    })
+    });
 
     const data = {};
 
@@ -71,24 +71,21 @@ export const filter = (goodsList, paginationWrapper) => {
 
     const url = new URL(location);
 
-    const search = url.searchParams.get('search');
+    const search = url.searchParams.get('search') || '';
 
     url.search = '';
     url.searchParams.set('search', search);
-
     for (const key in data) {
       url.searchParams.set(key, data[key]);
     }
 
     history.pushState(null, null, url);
 
-    getGoods().then(({goods, pages, page}) => {
-      filter.classList.remove('filter_show')
+    getGoods().then(({ goods, pages, page }) => {
+      filter.classList.remove('filter_show');
       hideOverlay();
       renderGoods(goodsList, goods, 'goods__item');
       startPagination(paginationWrapper, pages, page);
-    })
-
-
+    });
   });
-}
+};

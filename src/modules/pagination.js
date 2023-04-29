@@ -14,8 +14,7 @@ const createItemPagination = (hrefLink, textContent, active) => {
   li.append(a);
 
   return li;
-}
-
+};
 
 const pagination = (wrapper, pages, page, count) => {
   wrapper.textContent = '';
@@ -34,7 +33,7 @@ const pagination = (wrapper, pages, page, count) => {
     let n = i + 1;
 
     if (isNotStart) {
-      if(isEnd) {
+      if (isEnd) {
         n = pages - count + i + 1;
       } else {
         n = page - Math.floor(count / 2) + i;
@@ -75,9 +74,9 @@ export const startPagination = (paginationWrapper, pages, page) => {
       isMobile = true;
     }
 
-    if (window.innerWidth > 560 && isMobile)  {
+    if (window.innerWidth > 560 && isMobile) {
       pagination(paginationWrapper, pages, page, 6);
       isMobile = false;
     }
-  })
-}
+  });
+};

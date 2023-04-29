@@ -1,13 +1,15 @@
-import {getGoods} from "./goodsService";
-import {renderGoods} from "./renderGoods";
-import {startPagination} from "./pagination";
-import {cartControl} from "./cartControl";
-
+import { getGoods } from './goodsService';
+import { renderGoods } from './renderGoods';
+import { startPagination } from './pagination';
+import { cartControl } from './cartControl';
 
 export const searchWithoutReload = (goodsList, paginationWrapper) => {
   const searchForm = document.querySelector('.search');
+  const url = new URL(location);
+  const search = url.searchParams.get('search') || '';
+  searchForm.search.value = search;
 
-  searchForm.addEventListener('submit', (e) => {
+  searchForm.addEventListener('submit', e => {
     e.preventDefault();
 
     const searchValue = searchForm.search.value;
@@ -26,7 +28,7 @@ export const searchWithoutReload = (goodsList, paginationWrapper) => {
 
     history.pushState(null, null, url);
 
-    getGoods().then(({goods, pages, page}) => {
+    getGoods().then(({ goods, pages, page }) => {
       renderGoods(goodsList, goods, 'goods__item');
       startPagination(paginationWrapper, pages, page);
       cartControl({

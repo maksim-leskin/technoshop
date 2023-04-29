@@ -1,7 +1,7 @@
-import {API_URI} from "./var";
-import Swiper, {Scrollbar, Thumbs} from "swiper";
+import { API_URI } from './var';
+import Swiper, { Scrollbar, Thumbs } from 'swiper';
 
-const createCardImageSlider = (largeImages) => {
+const createCardImageSlider = largeImages => {
   const cardImageSlider = document.createElement('ul');
   cardImageSlider.className = 'swiper-wrapper';
 
@@ -12,14 +12,13 @@ const createCardImageSlider = (largeImages) => {
     img.src = `${API_URI}${url}`;
     li.append(img);
     return li;
-  })
+  });
 
   cardImageSlider.append(...cardImageSlides);
   return cardImageSlider;
-}
+};
 
-
-const createCardImageThumbSlider = (smallImages) => {
+const createCardImageThumbSlider = smallImages => {
   const cardImageSlider = document.createElement('ul');
   cardImageSlider.className = 'swiper-wrapper';
 
@@ -33,13 +32,13 @@ const createCardImageThumbSlider = (smallImages) => {
     button.append(img);
     li.append(button);
     return li;
-  })
+  });
 
   cardImageSlider.append(...cardImageSlides);
   return cardImageSlider;
 };
 
-const createParams = (params) => {
+const createParams = params => {
   const list = [];
 
   for (const key in params) {
@@ -57,7 +56,7 @@ const createParams = (params) => {
   return list;
 };
 
-const createDescription = (descriptions) => {
+const createDescription = descriptions => {
   const list = [];
 
   for (const description of descriptions) {
@@ -67,17 +66,19 @@ const createDescription = (descriptions) => {
   }
 
   return list;
-}
+};
 
 export const renderItem = item => {
-
   const cardImage = document.querySelector('.card__image');
   cardImage.append(createCardImageSlider(item.images.large));
 
   const cardSliderThumb = document.querySelector('.card__slider-thumb');
   const swiperScrollbar = document.createElement('div');
   swiperScrollbar.className = 'swiper-scrollbar';
-  cardSliderThumb.append(createCardImageThumbSlider(item.images.small), swiperScrollbar)
+  cardSliderThumb.append(
+    createCardImageThumbSlider(item.images.small),
+    swiperScrollbar,
+  );
 
   const cardTitle = document.querySelector('.card__title');
   cardTitle.textContent = item.title;
@@ -87,7 +88,9 @@ export const renderItem = item => {
 
   const cardPrice = document.querySelector('.card__price');
   cardPrice.textContent = new Intl.NumberFormat('ru-RU', {
-    style: 'currency', currency: 'RUB', maximumFractionDigits: 0,
+    style: 'currency',
+    currency: 'RUB',
+    maximumFractionDigits: 0,
   }).format(item.price);
 
   const cardAddCart = document.querySelector('.card__add-cart');
@@ -117,7 +120,7 @@ export const renderItem = item => {
         spaceBetween: 44,
       },
     },
-    modules: [Scrollbar]
+    modules: [Scrollbar],
   });
 
   new Swiper(cardImage, {
@@ -127,6 +130,6 @@ export const renderItem = item => {
       swiper: thumbSwiper,
       slideThumbActiveClass: 'card__thumb-btn_active',
     },
-    modules: [Thumbs]
+    modules: [Thumbs],
   });
 };

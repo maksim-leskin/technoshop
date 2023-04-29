@@ -1,30 +1,30 @@
-import {API_URI} from "./var";
-import {serviceCounter} from "./counterControl";
+import { API_URI } from './var';
+import { serviceCounter } from './counterControl';
 
 const addToCart = (id, count = 1) => {
-  const cartGoods = localStorage.getItem('cart-ts') ?
-    JSON.parse(localStorage.getItem('cart-ts')) :
-    {};
+  const cartGoods = localStorage.getItem('cart-ts')
+    ? JSON.parse(localStorage.getItem('cart-ts'))
+    : {};
 
   cartGoods[id] = count;
 
-  localStorage.setItem('cart-ts', JSON.stringify(cartGoods))
+  localStorage.setItem('cart-ts', JSON.stringify(cartGoods));
 };
 
-const removeToCart = (id) => {
-  const cartGoods = localStorage.getItem('cart-ts') ?
-    JSON.parse(localStorage.getItem('cart-ts')) :
-    {};
+const removeToCart = id => {
+  const cartGoods = localStorage.getItem('cart-ts')
+    ? JSON.parse(localStorage.getItem('cart-ts'))
+    : {};
 
   delete cartGoods[id];
 
-  localStorage.setItem('cart-ts', JSON.stringify(cartGoods))
+  localStorage.setItem('cart-ts', JSON.stringify(cartGoods));
 };
 
-const checkItems = ({classDelete, classAdd, classCount} = {}) => {
-  const cartGoods = localStorage.getItem('cart-ts') ?
-    JSON.parse(localStorage.getItem('cart-ts')) :
-    {};
+const checkItems = ({ classDelete, classAdd, classCount } = {}) => {
+  const cartGoods = localStorage.getItem('cart-ts')
+    ? JSON.parse(localStorage.getItem('cart-ts'))
+    : {};
 
   let count = 0;
 
@@ -46,7 +46,7 @@ const checkItems = ({classDelete, classAdd, classCount} = {}) => {
         elem.classList.remove(classDelete);
         elem.textContent = 'В корзину';
       }
-    })
+    });
   }
 
   if (classAdd && classCount) {
@@ -56,11 +56,16 @@ const checkItems = ({classDelete, classAdd, classCount} = {}) => {
   }
 };
 
-export const cartControl = ({wrapper, classAdd, classDelete, classCount} = {}) => {
-  checkItems({classDelete, classAdd, classCount});
+export const cartControl = ({
+  wrapper,
+  classAdd,
+  classDelete,
+  classCount,
+} = {}) => {
+  checkItems({ classDelete, classAdd, classCount });
 
   if (wrapper && classAdd && classDelete) {
-    wrapper.addEventListener('click', (e) => {
+    wrapper.addEventListener('click', e => {
       const target = e.target;
       const id = target.dataset.idGoods;
 
@@ -72,9 +77,8 @@ export const cartControl = ({wrapper, classAdd, classDelete, classCount} = {}) =
         addToCart(id);
       }
 
-      checkItems({classDelete});
-
-    })
+      checkItems({ classDelete });
+    });
   } else if (classAdd && classCount) {
     const btn = document.querySelector(`.${classAdd}`);
     const id = btn.dataset.idGoods;
@@ -86,7 +90,7 @@ export const cartControl = ({wrapper, classAdd, classDelete, classCount} = {}) =
 
       addToCart(id, count);
       checkItems();
-    })
+    });
   }
 };
 
@@ -99,7 +103,7 @@ export const renderCart = (goods, cartGoods) => {
     li.classList.add('cart-goods__item', 'item');
 
     const img = new Image(200, 200);
-    img.className = "item__img";
+    img.className = 'item__img';
     img.src = `${API_URI}${item.images.present}`;
     img.alt = item.title;
 
@@ -112,7 +116,7 @@ export const renderCart = (goods, cartGoods) => {
 
     const vendor = document.createElement('p');
     vendor.className = 'item__vendor-code';
-    vendor.textContent = `Артикул: ${item.id}`
+    vendor.textContent = `Артикул: ${item.id}`;
 
     const control = document.createElement('div');
     control.className = 'item__control';
@@ -123,7 +127,7 @@ export const renderCart = (goods, cartGoods) => {
 
     const dec = document.createElement('button');
     dec.className = 'item__btn item__btn_dec';
-    dec.textContent = '–'
+    dec.textContent = '–';
 
     const number = document.createElement('output');
     number.className = 'item__number';
@@ -131,7 +135,7 @@ export const renderCart = (goods, cartGoods) => {
 
     const inc = document.createElement('button');
     inc.className = 'item__btn item__btn_inc';
-    inc.textContent = '+'
+    inc.textContent = '+';
 
     count.append(dec, number, inc);
 
@@ -152,9 +156,8 @@ export const renderCart = (goods, cartGoods) => {
     `;
 
     detail.append(title, vendor);
-    control.append(count, price, remove)
+    control.append(count, price, remove);
     li.append(img, detail, control);
-
 
     cartGoodsList.append(li);
 
@@ -165,11 +168,11 @@ export const renderCart = (goods, cartGoods) => {
       selectorInc: '.item__btn_inc',
     });
 
-    count.addEventListener('click', (e) => {
+    count.addEventListener('click', e => {
       const target = e.target;
 
       if (target.closest('.item__btn_dec, .item__btn_inc')) {
-        addToCart(item.id, +number.value)
+        addToCart(item.id, +number.value);
         checkItems();
       }
     });
@@ -178,7 +181,6 @@ export const renderCart = (goods, cartGoods) => {
       removeToCart(item.id);
       li.remove();
       checkItems();
-    })
-  })
-
-}
+    });
+  });
+};

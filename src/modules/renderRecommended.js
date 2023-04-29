@@ -1,11 +1,10 @@
-import {API_URI} from "./var";
-import Swiper from "swiper";
-import {cartControl} from "./cartControl";
+import { API_URI } from './var';
+import Swiper from 'swiper';
+import { cartControl } from './cartControl';
 
 export const renderRecommended = (recommended, data, id) => {
   const goods = data.goods.filter(item => item.id !== id);
   if (goods.length) {
-
     const container = document.createElement('div');
     container.className = 'container';
     recommended.append(container);
@@ -25,7 +24,7 @@ export const renderRecommended = (recommended, data, id) => {
     swiperBlock.append(swiperWrapper);
 
     const goodsCards = goods.map(item => {
-      console.log(item)
+      console.log(item);
       const swiperSlide = document.createElement('li');
       swiperSlide.className = 'swiper-slide';
 
@@ -34,7 +33,7 @@ export const renderRecommended = (recommended, data, id) => {
 
       const itemLink = document.createElement('a');
       itemLink.className = 'goods-item-link';
-      itemLink.href = `card.html?id=${item.id}`
+      itemLink.href = `card.html?id=${item.id}`;
 
       const itemImage = document.createElement('img');
       itemImage.className = 'goods-item__image';
@@ -51,7 +50,9 @@ export const renderRecommended = (recommended, data, id) => {
       const itemPrice = document.createElement('p');
       itemPrice.className = 'goods-item__price';
       itemPrice.textContent = new Intl.NumberFormat('ru-RU', {
-        style: 'currency', currency: 'RUB', maximumFractionDigits: 0,
+        style: 'currency',
+        currency: 'RUB',
+        maximumFractionDigits: 0,
       }).format(item.price);
 
       const itemToCart = document.createElement('button');
@@ -64,7 +65,7 @@ export const renderRecommended = (recommended, data, id) => {
       itemCard.append(itemLink, itemBuy);
       swiperSlide.append(itemCard);
       return swiperSlide;
-    })
+    });
 
     swiperWrapper.append(...goodsCards);
 
@@ -90,7 +91,7 @@ export const renderRecommended = (recommended, data, id) => {
         1920: {
           slidesPerView: 5,
         },
-      }
+      },
     });
 
     cartControl({
@@ -98,7 +99,6 @@ export const renderRecommended = (recommended, data, id) => {
       classAdd: 'goods-item__to-cart',
       classDelete: 'goods-item__to-cart_remove',
     });
-
   } else {
     recommended.remove();
   }
